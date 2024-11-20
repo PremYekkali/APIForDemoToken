@@ -133,7 +133,7 @@ contract DemoToken {
 
 ```
 .
-├── app.js           # Main application file
+├── Premapitest.js   # Main application file
 ├── package.json     # Node.js package file
 ├── .env             # Environment variables
 ├── README.md        # Project documentation
