@@ -4,7 +4,7 @@
   "description": "API for interacting with a smart contract using web3.js",
   "main": "app.js",
   "scripts": {
-    "start": "node app.js"
+    "start": "node Premapitest.js"
   },
   "keywords": [
     "web3",
