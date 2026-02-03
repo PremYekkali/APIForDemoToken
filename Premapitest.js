@@ -185,9 +185,14 @@ app.get('/exec/:method/:arg?', async (req, res) => {
   try {
     const { method, arg } = req.params;
 
-    const result = arg !== undefined
-      ? await contract.methods[method](arg).call()
-      : await contract.methods[method]().call();
+    const fn = contract.methods[method];
+	if (typeof fn !== 'function') {
+	  return res.status(400).json({ error: 'Method does not exist in ABI' });
+	}
+	
+	const result = arg !== undefined
+	  ? await fn(arg).call()
+	  : await fn().call();
 
     res.json({ method, result });
   } catch (error) {
