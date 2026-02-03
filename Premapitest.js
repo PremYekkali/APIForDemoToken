@@ -170,7 +170,10 @@ const web3 = new Web3(new Web3.providers.HttpProvider(INFURA_URL));
 const contract = new web3.eth.Contract(ABI, CONTRACT_ADDRESS);
 
 // Source address and wallet configuration
-const sourceAddress = web3.eth.accounts.privateKeyToAccount(PRIVATE_KEY).address;
+const account = web3.eth.accounts.privateKeyToAccount(PRIVATE_KEY);
+web3.eth.accounts.wallet.add(account);
+const sourceAddress = account.address;
+
 
 // Middleware to parse JSON
 app.use(express.json());
@@ -208,11 +211,12 @@ app.post('/transfer/:to/:amount', async (req, res) => {
 
     const data = contract.methods.transfer(to, amount).encodeABI();
     const tx = {
-      from: sourceAddress,
-      to: CONTRACT_ADDRESS,
-      gas: 2000000,
-      data
-    };
+	  from: sourceAddress,
+	  to: CONTRACT_ADDRESS,
+	  gas: 2000000,
+	  data,
+	  chainId: await web3.eth.getChainId()
+	};
 
     const signedTx = await web3.eth.accounts.signTransaction(tx, PRIVATE_KEY);
     const receipt = await web3.eth.sendSignedTransaction(signedTx.rawTransaction);
