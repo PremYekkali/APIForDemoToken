@@ -175,25 +175,26 @@ const sourceAddress = web3.eth.accounts.privateKeyToAccount(PRIVATE_KEY).address
 // Middleware to parse JSON
 app.use(express.json());
 
-// Endpoint 1: GET /get/:field
-app.get('/get/:field/:arg?', async (req, res) => {
+/**
+ * WARNING:
+ * This service is a development-only contract execution proxy.
+ * It forwards arbitrary ABI calls and provides NO safety guarantees.
+ */
+// GET /exec/:method/:arg?
+app.get('/exec/:method/:arg?', async (req, res) => {
   try {
-    const { field, arg } = req.params;
+    const { method, arg } = req.params;
 
-    if (typeof contract.methods[field] === 'function') {
-      // If the method expects an argument
-      const result = arg
-        ? await contract.methods[field](arg).call()
-        : await contract.methods[field]().call();
+    const result = arg !== undefined
+      ? await contract.methods[method](arg).call()
+      : await contract.methods[method]().call();
 
-      res.json({ field, result });
-    } else {
-      res.status(400).json({ error: 'Invalid field name or incorrect method usage' });
-    }
+    res.json({ method, result });
   } catch (error) {
     res.status(500).json({ error: error.message });
   }
 });
+
 
 // Endpoint 2: POST /transfer/:to/:amount
 app.post('/transfer/:to/:amount', async (req, res) => {
