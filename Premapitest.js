@@ -209,6 +209,10 @@ app.post('/transfer/:to/:amount', async (req, res) => {
   try {
     const { to, amount } = req.params;
 
+	if (!web3.utils.isAddress(to)) {
+	  return res.status(400).json({ error: 'Invalid recipient address' });
+	}
+
     const data = contract.methods.transfer(to, amount).encodeABI();
     const tx = {
 	  from: sourceAddress,
