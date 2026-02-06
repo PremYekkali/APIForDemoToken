@@ -163,7 +163,7 @@ const ABI = [
 	}
 ];
 
-// Configure web3
+// Configuring web3
 const web3 = new Web3(new Web3.providers.HttpProvider(INFURA_URL));
 
 // Contract instance
@@ -181,7 +181,7 @@ app.use(express.json());
 /**
  * WARNING:
  * This service is a development-only contract execution proxy.
- * It forwards arbitrary ABI calls and provides NO safety guarantees.
+ * It forwards arbitrary ABI calls.
  */
 // GET /exec/:method/:arg?
 app.get('/exec/:method/:arg?', async (req, res) => {
