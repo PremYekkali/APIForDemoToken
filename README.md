@@ -68,7 +68,7 @@ A Node.js API that interacts with an Ethereum based smart contract using **web3.
 
 ## Response Format
 
-- **Success**: Returns the result of the transaction or the value from the getter.
+- **Success**: Returns the result of the transaction or the value from the getter function.
 - **Error**: Returns an error message with details.
 
 ---
