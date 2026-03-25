@@ -1,7 +1,7 @@
 
 # Token API
 
-A Node.js API that interacts with an Ethereum based smart contract using **web3.js**. The project exposes endpoints to retrieve data via getter functions and to execute a token transfer from a predefined source address.
+A Node.js API that interacts with an Ethereum-based smart contract using **web3.js**. The project exposes endpoints to retrieve data via getter functions and to execute a token transfer from a predefined source address.
 
 ---
 
