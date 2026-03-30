@@ -57,7 +57,7 @@ A Node.js API that interacts with an Ethereum-based smart contract using **web3.
 
 **POST** `/transfer/:to/:amount`
 
-- **Description**: Transfers tokens from the configured source address to the specified recipient.
+- **Description**: Transfers tokens from the configured source address to the specified recipient address.
 - **Parameters**:
   - `to` (required): The recipient's address.
   - `amount` (required): The amount of tokens to transfer.
@@ -93,7 +93,7 @@ A Node.js API that interacts with an Ethereum-based smart contract using **web3.
 
 ## Smart Contract Example
 
-Deploy this Solidity contract before using the API:
+Deploy this Solidity smart contract before using the API:
 
 ```solidity
 // SPDX-License-Identifier: MIT
