@@ -7,7 +7,7 @@ A Node.js API that interacts with an Ethereum-based smart contract using **web3.
 
 ## Features
 
-- Retrieve values from getter functions of a deployed smart contract.
+- Retrieve values from getter functions of an already deployed smart contract.
 - Execute a `transfer` function to send tokens from a predefined source address.
 - Handles both argument-less and argument-requiring getter functions dynamically.
 
