@@ -145,7 +145,7 @@ contract DemoToken {
 
 - **express**: Web framework for Node.js.
 - **web3**: Library to interact with the Ethereum blockchain.
-- **dotenv**: To manage environment variables securely.
+- **dotenv**: To manage the environment variables securely.
 
 ---
 
